@@ -24,7 +24,7 @@ jobs:
       run: ./mvnw clean install
 
     - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: built-java-app
         path: target/
