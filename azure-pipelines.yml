@@ -1,0 +1,21 @@
+trigger:
+  branches:
+    include:
+      - dev-branch
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - task: UseJava@1
+    inputs:
+      versionSpec: '11'
+      jdkArchitecture: 'x64'
+
+  - script: ./mvnw clean install
+    displayName: 'Build Java App with Maven'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: 'target'
+      artifactName: 'drop'
